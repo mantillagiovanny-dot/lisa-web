@@ -1,0 +1,1303 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lisa | Image Stylist & Personal Transformation</title>
+<meta name="description" content="Asesora de imagen personal con más de 10 años transformando profesionales. Asesoría de imagen, makeover de ropa, cambio de estilo profesional y transformación de imagen en Panamá y virtual.">
+<meta name="keywords" content="diseñadora de imagen, asesoría de imagen personal, cambio de estilo profesional, makeover de ropa, transformación de imagen">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --ink: #1a1a18;
+    --ink-light: #3d3d38;
+    --cream: #f8f5f0;
+    --white: #ffffff;
+    --sage: #8a9e88;
+    --sage-dark: #5d7a5b;
+    --sage-light: #b8ccb6;
+    --gold: #c9a96e;
+    --gold-light: #e8d5b0;
+    --warm-gray: #e8e4de;
+    --text-muted: #7a7870;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--cream);
+    color: var(--ink);
+    overflow-x: hidden;
+    font-weight: 300;
+    line-height: 1.7;
+  }
+
+  /* TYPOGRAPHY */
+  .serif { font-family: 'Cormorant Garamond', serif; }
+
+  h1, h2, h3 { font-family: 'Cormorant Garamond', serif; font-weight: 400; line-height: 1.2; }
+
+  /* UTILITY */
+  .container { max-width: 1200px; margin: 0 auto; padding: 0 40px; }
+  .container-wide { max-width: 1400px; margin: 0 auto; padding: 0 40px; }
+
+  /* ===== NAVIGATION ===== */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    padding: 24px 60px;
+    display: flex; align-items: center; justify-content: space-between;
+    transition: all 0.4s ease;
+  }
+  nav.scrolled {
+    background: rgba(248, 245, 240, 0.97);
+    backdrop-filter: blur(12px);
+    padding: 16px 60px;
+    box-shadow: 0 1px 0 rgba(0,0,0,0.08);
+  }
+
+  .nav-logo {
+    display: flex; flex-direction: column; text-decoration: none;
+  }
+  .nav-logo .logo-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 28px; font-weight: 600; letter-spacing: 4px;
+    color: var(--ink); line-height: 1;
+    text-transform: uppercase;
+  }
+  .nav-logo .logo-sub {
+    font-size: 9px; letter-spacing: 5px; color: var(--text-muted);
+    text-transform: uppercase; margin-top: 3px;
+  }
+
+  .nav-links {
+    display: flex; align-items: center; gap: 36px; list-style: none;
+  }
+  .nav-links a {
+    font-size: 11px; letter-spacing: 2.5px; text-transform: uppercase;
+    color: var(--ink-light); text-decoration: none; font-weight: 400;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--sage-dark); }
+
+  .btn-nav {
+    background: var(--ink); color: var(--white) !important;
+    padding: 12px 24px; font-size: 10px !important;
+    letter-spacing: 2.5px; text-transform: uppercase;
+    transition: background 0.3s !important;
+  }
+  .btn-nav:hover { background: var(--sage-dark) !important; }
+
+  .menu-toggle { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; }
+  .menu-toggle span { display: block; width: 26px; height: 1px; background: var(--ink); transition: all 0.3s; }
+
+  /* ===== HERO ===== */
+  #hero {
+    min-height: 100vh;
+    display: grid; grid-template-columns: 1fr 1fr;
+    position: relative; overflow: hidden;
+  }
+
+  .hero-left {
+    background: var(--ink);
+    display: flex; flex-direction: column; justify-content: flex-end;
+    padding: 120px 80px 80px;
+    position: relative; overflow: hidden;
+  }
+  .hero-left::before {
+    content: '';
+    position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+    background: url('https://images.unsplash.com/photo-1529139574466-a303027614b0?w=900&q=80') center/cover no-repeat;
+    opacity: 0.35;
+  }
+  .hero-left::after {
+    content: '';
+    position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+    background: linear-gradient(to top, rgba(26,26,24,0.95) 40%, rgba(26,26,24,0.4) 100%);
+  }
+
+  .hero-left-content { position: relative; z-index: 2; }
+
+  .hero-tag {
+    font-size: 10px; letter-spacing: 4px; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 24px; display: flex; align-items: center; gap: 12px;
+  }
+  .hero-tag::before { content: ''; width: 32px; height: 1px; background: var(--gold); }
+
+  .hero-title {
+    font-size: clamp(48px, 6vw, 80px);
+    color: var(--white); font-weight: 300; line-height: 1.05;
+    margin-bottom: 32px;
+  }
+  .hero-title em { font-style: italic; color: var(--gold-light); }
+
+  .hero-sub {
+    font-size: 15px; color: rgba(255,255,255,0.65);
+    max-width: 380px; line-height: 1.8; margin-bottom: 48px;
+  }
+
+  .hero-ctas { display: flex; gap: 16px; flex-wrap: wrap; }
+
+  .btn-primary {
+    display: inline-flex; align-items: center; gap: 12px;
+    background: var(--gold); color: var(--ink);
+    padding: 16px 32px; font-size: 11px; letter-spacing: 2.5px;
+    text-transform: uppercase; text-decoration: none; font-weight: 500;
+    transition: all 0.3s; white-space: nowrap;
+  }
+  .btn-primary:hover { background: var(--gold-light); transform: translateY(-2px); }
+
+  .btn-outline {
+    display: inline-flex; align-items: center; gap: 12px;
+    border: 1px solid rgba(255,255,255,0.35); color: var(--white);
+    padding: 16px 32px; font-size: 11px; letter-spacing: 2.5px;
+    text-transform: uppercase; text-decoration: none; font-weight: 400;
+    transition: all 0.3s; white-space: nowrap;
+  }
+  .btn-outline:hover { border-color: var(--white); background: rgba(255,255,255,0.08); }
+
+  .hero-microcopy {
+    margin-top: 40px; display: flex; gap: 28px; flex-wrap: wrap;
+  }
+  .hero-microcopy span {
+    font-size: 11px; color: rgba(255,255,255,0.5); letter-spacing: 1px;
+    display: flex; align-items: center; gap: 8px;
+  }
+  .hero-microcopy span::before { content: '✦'; color: var(--gold); font-size: 8px; }
+
+  .hero-right {
+    background: var(--cream);
+    display: flex; flex-direction: column; justify-content: center; align-items: center;
+    padding: 120px 80px;
+    position: relative;
+  }
+
+  .hero-stat-card {
+    background: var(--white);
+    padding: 48px 40px;
+    position: relative; width: 100%; max-width: 380px;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.08);
+  }
+  .hero-stat-card::before {
+    content: '';
+    position: absolute; top: 0; left: 0; right: 0; height: 2px;
+    background: linear-gradient(to right, var(--sage), var(--gold));
+  }
+
+  .stat-item { margin-bottom: 32px; padding-bottom: 32px; border-bottom: 1px solid var(--warm-gray); }
+  .stat-item:last-child { margin-bottom: 0; padding-bottom: 0; border-bottom: none; }
+  .stat-number { font-family: 'Cormorant Garamond', serif; font-size: 52px; color: var(--ink); line-height: 1; font-weight: 300; }
+  .stat-number span { font-size: 28px; color: var(--sage-dark); }
+  .stat-label { font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: var(--text-muted); margin-top: 6px; }
+
+  /* ===== PROBLEM → SOLUTION ===== */
+  #problem {
+    padding: 120px 0;
+    background: var(--white);
+  }
+
+  .problem-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 0;
+    align-items: stretch;
+  }
+
+  .problem-left {
+    padding: 80px; background: var(--warm-gray);
+    position: relative;
+  }
+
+  .section-eyebrow {
+    font-size: 10px; letter-spacing: 4px; text-transform: uppercase;
+    color: var(--sage-dark); margin-bottom: 20px;
+    display: flex; align-items: center; gap: 12px;
+  }
+  .section-eyebrow::after { content: ''; flex: 1; max-width: 40px; height: 1px; background: var(--sage-dark); }
+
+  .section-title { font-size: clamp(32px, 4vw, 52px); color: var(--ink); margin-bottom: 40px; }
+  .section-title em { font-style: italic; color: var(--sage-dark); }
+
+  .problem-list { list-style: none; }
+  .problem-list li {
+    padding: 18px 0; border-bottom: 1px solid rgba(0,0,0,0.08);
+    font-size: 15px; color: var(--ink-light);
+    display: flex; align-items: flex-start; gap: 16px;
+  }
+  .problem-list li::before {
+    content: '—'; color: var(--text-muted); flex-shrink: 0; margin-top: 2px;
+  }
+
+  .problem-right {
+    padding: 80px; background: var(--ink);
+    display: flex; flex-direction: column; justify-content: center;
+  }
+
+  .solution-quote {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(24px, 3vw, 38px); color: var(--white);
+    font-style: italic; font-weight: 300; line-height: 1.4;
+    margin-bottom: 40px;
+  }
+  .solution-quote strong { font-style: normal; color: var(--gold-light); font-weight: 400; }
+
+  .solution-detail { font-size: 14px; color: rgba(255,255,255,0.55); line-height: 1.9; }
+
+  /* ===== SOBRE LISA ===== */
+  #about {
+    padding: 120px 0;
+    background: var(--cream);
+  }
+
+  .about-grid {
+    display: grid; grid-template-columns: 5fr 7fr; gap: 80px; align-items: center;
+  }
+
+  .about-image-wrap { position: relative; }
+
+  .about-img {
+    width: 100%; aspect-ratio: 3/4; object-fit: cover;
+    display: block;
+    background: linear-gradient(135deg, #d4cdc4 0%, #b8b0a5 100%);
+    position: relative; overflow: hidden;
+  }
+
+  .about-img-placeholder {
+    width: 100%; aspect-ratio: 3/4;
+    background: linear-gradient(160deg, #c8c0b5 0%, #9e9488 100%);
+    display: flex; align-items: flex-end; padding: 32px;
+    position: relative; overflow: hidden;
+  }
+  .about-img-placeholder::before {
+    content: '';
+    position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+    background: url('https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?w=600&q=80') center/cover no-repeat;
+    opacity: 0.85;
+  }
+
+  .about-badge {
+    position: absolute; bottom: -24px; right: -24px;
+    background: var(--gold); padding: 28px 24px;
+    text-align: center; z-index: 2;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.15);
+  }
+  .about-badge .num { font-family: 'Cormorant Garamond', serif; font-size: 42px; color: var(--ink); line-height: 1; }
+  .about-badge .lbl { font-size: 9px; letter-spacing: 2px; text-transform: uppercase; color: var(--ink); margin-top: 4px; }
+
+  .about-content { padding-right: 20px; }
+
+  .about-bio {
+    font-size: 16px; color: var(--ink-light); line-height: 1.9;
+    margin-bottom: 40px;
+  }
+  .about-bio p { margin-bottom: 20px; }
+
+  .about-certs {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 16px;
+    margin-top: 40px;
+  }
+  .cert-item {
+    padding: 20px; border: 1px solid var(--warm-gray);
+    background: var(--white);
+  }
+  .cert-item .cert-icon { font-size: 20px; margin-bottom: 8px; }
+  .cert-item .cert-title { font-size: 12px; font-weight: 500; color: var(--ink); letter-spacing: 0.5px; }
+  .cert-item .cert-org { font-size: 11px; color: var(--text-muted); margin-top: 2px; }
+
+  .about-philosophy {
+    margin-top: 36px; padding: 28px 32px;
+    border-left: 3px solid var(--sage);
+    background: var(--white);
+  }
+  .about-philosophy p {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 20px; font-style: italic; color: var(--ink-light); line-height: 1.6;
+  }
+
+  /* ===== SERVICIOS ===== */
+  #services {
+    padding: 120px 0;
+    background: var(--ink);
+  }
+
+  #services .section-eyebrow { color: var(--gold); }
+  #services .section-eyebrow::after { background: var(--gold); }
+  #services .section-title { color: var(--white); }
+
+  .services-intro {
+    font-size: 16px; color: rgba(255,255,255,0.5);
+    max-width: 600px; margin-bottom: 64px; line-height: 1.9;
+  }
+
+  .services-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px;
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.06);
+    margin-bottom: 60px;
+  }
+
+  .service-card {
+    background: var(--ink); padding: 48px 40px;
+    position: relative; overflow: hidden;
+    transition: background 0.3s;
+    cursor: pointer;
+  }
+  .service-card::before {
+    content: '';
+    position: absolute; top: 0; left: 0; right: 0; height: 2px;
+    background: transparent;
+    transition: background 0.3s;
+  }
+  .service-card:hover { background: rgba(255,255,255,0.04); }
+  .service-card:hover::before { background: linear-gradient(to right, var(--sage), var(--gold)); }
+
+  .service-icon { font-size: 32px; margin-bottom: 24px; }
+  .service-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 24px; color: var(--white); margin-bottom: 16px; font-weight: 400;
+  }
+  .service-desc { font-size: 13px; color: rgba(255,255,255,0.5); line-height: 1.8; margin-bottom: 28px; }
+  .service-price {
+    font-size: 11px; letter-spacing: 2px; color: var(--gold);
+    text-transform: uppercase;
+  }
+  .service-price strong { font-family: 'Cormorant Garamond', serif; font-size: 24px; font-weight: 300; margin-right: 4px; }
+
+  .services-cta { text-align: center; }
+
+  .btn-gold {
+    display: inline-flex; align-items: center; gap: 12px;
+    background: var(--gold); color: var(--ink);
+    padding: 18px 48px; font-size: 11px; letter-spacing: 3px;
+    text-transform: uppercase; text-decoration: none; font-weight: 500;
+    transition: all 0.3s;
+  }
+  .btn-gold:hover { background: var(--gold-light); transform: translateY(-2px); box-shadow: 0 12px 40px rgba(201,169,110,0.3); }
+
+  /* ===== TRANSFORMACIONES ===== */
+  #transformations {
+    padding: 120px 0;
+    background: var(--white);
+  }
+
+  .transformations-header { margin-bottom: 64px; }
+  .transformations-header .section-title { max-width: 600px; }
+
+  .transform-grid {
+    display: grid; grid-template-columns: repeat(2, 1fr); gap: 2px;
+    margin-bottom: 48px;
+  }
+
+  .transform-card {
+    position: relative; overflow: hidden;
+    aspect-ratio: 4/3;
+    background: var(--warm-gray);
+  }
+
+  .transform-before, .transform-after {
+    position: absolute; top: 0; left: 0; width: 50%; height: 100%;
+    overflow: hidden;
+  }
+  .transform-after { left: 50%; border-left: 2px solid var(--white); }
+
+  .transform-img {
+    width: 200%; height: 100%; object-fit: cover;
+    display: block;
+  }
+  .transform-after .transform-img { margin-left: -100%; }
+
+  /* Placeholder versions */
+  .transform-placeholder {
+    display: grid; grid-template-columns: 1fr 1fr;
+    height: 280px; overflow: hidden;
+  }
+
+  .tp-before {
+    background: linear-gradient(180deg, #c5bdb5 0%, #a8a098 100%);
+    display: flex; align-items: flex-end; padding: 20px;
+    position: relative; overflow: hidden;
+  }
+  .tp-before::before {
+    content: '';
+    position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+    opacity: 0.6;
+  }
+  .tp-after {
+    background: linear-gradient(180deg, #2a2a28 0%, #1a1a18 100%);
+    display: flex; align-items: flex-end; padding: 20px;
+    position: relative; overflow: hidden;
+    border-left: 2px solid var(--white);
+  }
+
+  .transform-label {
+    font-size: 9px; letter-spacing: 3px; text-transform: uppercase;
+    color: rgba(255,255,255,0.7); position: relative; z-index: 1;
+  }
+
+  .transform-overlay {
+    position: absolute; bottom: 0; left: 0; right: 0;
+    background: linear-gradient(to top, rgba(26,26,24,0.9) 0%, transparent 100%);
+    padding: 32px 24px 24px;
+    transform: translateY(100%);
+    transition: transform 0.4s ease;
+  }
+  .transform-card:hover .transform-overlay { transform: translateY(0); }
+  .transform-overlay p { font-size: 13px; color: rgba(255,255,255,0.85); line-height: 1.7; }
+
+  .transform-showcase {
+    display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px;
+    margin-bottom: 48px;
+  }
+
+  .showcase-card {
+    position: relative; overflow: hidden; cursor: pointer;
+  }
+
+  .showcase-before-after {
+    display: grid; grid-template-columns: 1fr 1fr; height: 300px;
+    border: 1px solid var(--warm-gray);
+  }
+
+  .sba-panel {
+    position: relative; overflow: hidden;
+    display: flex; align-items: flex-end; padding: 16px;
+  }
+  .sba-panel.before { background: linear-gradient(160deg, #d8d0c8, #b8b0a5); }
+  .sba-panel.after { background: linear-gradient(160deg, #2d2d2a, #1a1a18); border-left: 2px solid var(--white); }
+
+  .sba-tag {
+    font-size: 8px; letter-spacing: 3px; text-transform: uppercase;
+    font-weight: 500;
+    padding: 5px 10px; background: rgba(255,255,255,0.15);
+    backdrop-filter: blur(4px);
+  }
+  .sba-panel.before .sba-tag { color: var(--ink); background: rgba(255,255,255,0.6); }
+  .sba-panel.after .sba-tag { color: var(--white); }
+
+  .showcase-info {
+    padding: 20px; border: 1px solid var(--warm-gray); border-top: none;
+    background: var(--white);
+  }
+  .showcase-info h4 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 18px; color: var(--ink); margin-bottom: 6px; font-weight: 400;
+  }
+  .showcase-info p { font-size: 12px; color: var(--text-muted); line-height: 1.7; }
+
+  .transform-bottom-quote {
+    text-align: center; padding: 48px;
+    border: 1px solid var(--warm-gray); background: var(--cream);
+  }
+  .transform-bottom-quote p {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px; font-style: italic; color: var(--ink-light);
+  }
+  .transform-bottom-quote p strong { font-style: normal; color: var(--sage-dark); font-weight: 400; }
+
+  /* ===== TESTIMONIOS ===== */
+  #testimonials {
+    padding: 120px 0;
+    background: var(--cream);
+  }
+
+  .testimonials-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px;
+    margin-top: 64px;
+  }
+
+  .testimonial-card {
+    background: var(--white); padding: 48px 40px;
+    position: relative;
+    border-top: 2px solid var(--warm-gray);
+    transition: border-color 0.3s;
+  }
+  .testimonial-card:hover { border-top-color: var(--sage); }
+
+  .testimonial-quote-icon {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 80px; color: var(--warm-gray); line-height: 0.8;
+    position: absolute; top: 32px; right: 32px; font-weight: 400;
+  }
+
+  .testimonial-text {
+    font-size: 15px; color: var(--ink-light); line-height: 1.8;
+    margin-bottom: 32px; position: relative; z-index: 1;
+  }
+
+  .testimonial-author { display: flex; align-items: center; gap: 16px; }
+  .author-avatar {
+    width: 48px; height: 48px; border-radius: 50%;
+    background: linear-gradient(135deg, var(--sage-light), var(--sage));
+    flex-shrink: 0; display: flex; align-items: center; justify-content: center;
+    font-family: 'Cormorant Garamond', serif; font-size: 18px; color: var(--white); font-weight: 600;
+  }
+  .author-name { font-weight: 500; font-size: 14px; color: var(--ink); }
+  .author-role { font-size: 11px; color: var(--text-muted); letter-spacing: 0.5px; }
+
+  .testimonials-fourth {
+    margin-top: 24px;
+    display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 24px;
+    align-items: stretch;
+  }
+  .testimonials-fourth .testimonial-card:first-child { grid-column: span 2; }
+
+  /* ===== CTA SECTION ===== */
+  #cta {
+    padding: 140px 0;
+    background: var(--ink); text-align: center;
+    position: relative; overflow: hidden;
+  }
+  #cta::before {
+    content: 'LISA';
+    position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+    font-family: 'Cormorant Garamond', serif; font-size: 300px; font-weight: 700;
+    color: rgba(255,255,255,0.02); letter-spacing: 40px; white-space: nowrap;
+  }
+
+  #cta .section-eyebrow { color: var(--gold); justify-content: center; }
+  #cta .section-eyebrow::after { display: none; }
+  #cta .section-eyebrow::before { content: ''; width: 40px; height: 1px; background: var(--gold); }
+
+  .cta-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(42px, 6vw, 80px); color: var(--white);
+    font-weight: 300; margin-bottom: 24px; line-height: 1.1;
+    position: relative; z-index: 1;
+  }
+  .cta-title em { font-style: italic; color: var(--gold-light); }
+
+  .cta-sub {
+    font-size: 16px; color: rgba(255,255,255,0.5);
+    max-width: 480px; margin: 0 auto 56px; line-height: 1.8;
+    position: relative; z-index: 1;
+  }
+
+  /* ===== AGENDA ===== */
+  #agenda {
+    padding: 120px 0;
+    background: var(--white);
+  }
+
+  .agenda-grid {
+    display: grid; grid-template-columns: 5fr 7fr; gap: 80px; align-items: start;
+  }
+
+  .agenda-info h3 {
+    font-size: clamp(28px, 3vw, 42px); margin-bottom: 20px; color: var(--ink);
+  }
+  .agenda-info p { font-size: 15px; color: var(--text-muted); line-height: 1.9; margin-bottom: 40px; }
+
+  .agenda-features { list-style: none; }
+  .agenda-features li {
+    padding: 16px 0; border-bottom: 1px solid var(--warm-gray);
+    font-size: 14px; color: var(--ink-light);
+    display: flex; align-items: center; gap: 14px;
+  }
+  .agenda-features li::before {
+    content: '✦'; color: var(--sage-dark); font-size: 10px; flex-shrink: 0;
+  }
+
+  .agenda-response {
+    margin-top: 32px; padding: 20px 24px;
+    background: var(--cream); border-left: 3px solid var(--gold);
+  }
+  .agenda-response p { font-size: 13px; color: var(--ink-light); }
+  .agenda-response strong { color: var(--ink); }
+
+  .form-card { background: var(--cream); padding: 48px; }
+
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+
+  .form-group { display: flex; flex-direction: column; gap: 8px; margin-bottom: 20px; }
+  .form-group label {
+    font-size: 10px; letter-spacing: 2.5px; text-transform: uppercase; color: var(--text-muted);
+  }
+  .form-group input, .form-group select, .form-group textarea {
+    padding: 14px 16px; border: 1px solid var(--warm-gray);
+    background: var(--white); color: var(--ink); font-family: 'DM Sans', sans-serif;
+    font-size: 14px; font-weight: 300; outline: none;
+    transition: border-color 0.2s;
+    -webkit-appearance: none;
+  }
+  .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+    border-color: var(--sage);
+  }
+  .form-group textarea { resize: vertical; min-height: 100px; }
+
+  .form-submit {
+    width: 100%; padding: 18px; background: var(--ink); color: var(--white);
+    border: none; font-family: 'DM Sans', sans-serif; font-size: 11px;
+    letter-spacing: 3px; text-transform: uppercase; cursor: pointer; font-weight: 500;
+    transition: background 0.3s;
+    margin-top: 8px;
+  }
+  .form-submit:hover { background: var(--sage-dark); }
+
+  .form-success {
+    display: none; text-align: center; padding: 40px;
+    background: var(--sage-light);
+  }
+  .form-success p { font-family: 'Cormorant Garamond', serif; font-size: 22px; color: var(--ink); font-style: italic; }
+
+  /* ===== FOOTER ===== */
+  footer {
+    background: #111110; color: rgba(255,255,255,0.4);
+    padding: 80px 0 40px;
+  }
+
+  .footer-grid {
+    display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 60px;
+    padding-bottom: 60px; border-bottom: 1px solid rgba(255,255,255,0.06);
+    margin-bottom: 40px;
+  }
+
+  .footer-brand .footer-logo {
+    font-family: 'Cormorant Garamond', serif; font-size: 28px;
+    letter-spacing: 4px; color: var(--white); text-transform: uppercase;
+    margin-bottom: 16px; display: block; font-weight: 600;
+  }
+  .footer-brand p { font-size: 13px; line-height: 1.8; max-width: 240px; }
+
+  .footer-social { display: flex; gap: 12px; margin-top: 28px; }
+  .social-link {
+    width: 40px; height: 40px; border: 1px solid rgba(255,255,255,0.12);
+    display: flex; align-items: center; justify-content: center;
+    color: rgba(255,255,255,0.4); text-decoration: none; font-size: 14px;
+    transition: all 0.2s;
+  }
+  .social-link:hover { border-color: var(--gold); color: var(--gold); }
+
+  .footer-col h5 {
+    font-size: 10px; letter-spacing: 3px; text-transform: uppercase;
+    color: rgba(255,255,255,0.6); margin-bottom: 24px; font-weight: 500;
+  }
+  .footer-col ul { list-style: none; }
+  .footer-col ul li { margin-bottom: 12px; }
+  .footer-col ul li a {
+    color: rgba(255,255,255,0.4); text-decoration: none; font-size: 13px;
+    transition: color 0.2s;
+  }
+  .footer-col ul li a:hover { color: var(--white); }
+
+  .footer-contact-item { display: flex; gap: 12px; margin-bottom: 14px; align-items: flex-start; }
+  .footer-contact-item .icon { color: var(--gold); font-size: 13px; margin-top: 1px; }
+  .footer-contact-item span { font-size: 13px; line-height: 1.6; }
+
+  .footer-bottom {
+    display: flex; align-items: center; justify-content: space-between;
+    flex-wrap: wrap; gap: 16px;
+  }
+  .footer-bottom p { font-size: 12px; }
+  .footer-legal { display: flex; gap: 24px; }
+  .footer-legal a { font-size: 12px; color: rgba(255,255,255,0.3); text-decoration: none; transition: color 0.2s; }
+  .footer-legal a:hover { color: rgba(255,255,255,0.7); }
+
+  /* ===== SCROLL ANIMATIONS ===== */
+  .reveal {
+    opacity: 0; transform: translateY(30px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+
+  .reveal-delay-1 { transition-delay: 0.1s; }
+  .reveal-delay-2 { transition-delay: 0.2s; }
+  .reveal-delay-3 { transition-delay: 0.3s; }
+  .reveal-delay-4 { transition-delay: 0.4s; }
+
+  /* ===== MOBILE NAV ===== */
+  @media (max-width: 900px) {
+    nav { padding: 20px 24px; }
+    nav.scrolled { padding: 14px 24px; }
+
+    .nav-links-wrap {
+      display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+      background: var(--white); flex-direction: column;
+      align-items: center; justify-content: center;
+      z-index: 99;
+    }
+    .nav-links-wrap.open { display: flex; }
+    .nav-links { flex-direction: column; gap: 32px; }
+    .nav-links a { font-size: 13px; letter-spacing: 3px; }
+    .btn-nav { padding: 16px 40px !important; font-size: 11px !important; }
+
+    .menu-toggle { display: flex; z-index: 100; }
+    .menu-toggle.open span:nth-child(1) { transform: rotate(45deg) translate(4px, 4px); }
+    .menu-toggle.open span:nth-child(2) { opacity: 0; }
+    .menu-toggle.open span:nth-child(3) { transform: rotate(-45deg) translate(4px, -4px); }
+
+    #hero { grid-template-columns: 1fr; min-height: auto; }
+    .hero-left { padding: 140px 32px 60px; }
+    .hero-right { padding: 48px 32px; }
+    .hero-stat-card { max-width: 100%; }
+
+    .problem-grid, .about-grid, .agenda-grid { grid-template-columns: 1fr; }
+    .problem-left, .problem-right { padding: 56px 32px; }
+    .about-content { padding-right: 0; }
+    .about-badge { bottom: -12px; right: -12px; }
+
+    .services-grid { grid-template-columns: 1fr; }
+    .testimonials-grid, .testimonials-fourth { grid-template-columns: 1fr; }
+    .testimonials-fourth .testimonial-card:first-child { grid-column: span 1; }
+
+    .transform-showcase { grid-template-columns: 1fr; }
+
+    .footer-grid { grid-template-columns: 1fr 1fr; gap: 40px; }
+    .form-row { grid-template-columns: 1fr; }
+    .container, .container-wide { padding: 0 24px; }
+    .about-certs { grid-template-columns: 1fr; }
+    .form-card { padding: 32px 24px; }
+    .agenda-grid { gap: 48px; }
+  }
+
+  @media (max-width: 640px) {
+    .footer-grid { grid-template-columns: 1fr; }
+    .footer-bottom { flex-direction: column; gap: 12px; }
+    #cta::before { font-size: 120px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAVIGATION -->
+<nav id="mainNav">
+  <a href="#" class="nav-logo">
+    <span class="logo-name">Lisa</span>
+    <span class="logo-sub">Image Stylist</span>
+  </a>
+  <div class="nav-links-wrap" id="navLinksWrap">
+    <ul class="nav-links">
+      <li><a href="#hero">Inicio</a></li>
+      <li><a href="#about">Sobre Lisa</a></li>
+      <li><a href="#services">Servicios</a></li>
+      <li><a href="#transformations">Transformaciones</a></li>
+      <li><a href="#testimonials">Testimonios</a></li>
+      <li><a href="#agenda" class="btn-nav">Agenda tu Transformación</a></li>
+    </ul>
+  </div>
+  <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-left">
+    <div class="hero-left-content">
+      <div class="hero-tag">Image Consulting</div>
+      <h1 class="hero-title reveal">Tu imagen<br>habla <em>antes<br>que tú.</em></h1>
+      <p class="hero-sub reveal reveal-delay-1">Transformaciones estratégicas a través de tu estilo personal para elevar tu confianza, presencia y oportunidades.</p>
+      <div class="hero-ctas reveal reveal-delay-2">
+        <a href="#agenda" class="btn-primary">Agenda tu Cita →</a>
+        <a href="#transformations" class="btn-outline">Ver Transformaciones</a>
+      </div>
+      <div class="hero-microcopy reveal reveal-delay-3">
+        <span>+10 años de experiencia</span>
+        <span>+300 transformaciones</span>
+        <span>Asesoría personalizada</span>
+      </div>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="hero-stat-card reveal">
+      <div class="stat-item">
+        <div class="stat-number">300<span>+</span></div>
+        <div class="stat-label">Transformaciones exitosas</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number">10<span>+</span></div>
+        <div class="stat-label">Años de experiencia</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number">98<span>%</span></div>
+        <div class="stat-label">Clientes satisfechos</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROBLEMA → SOLUCIÓN -->
+<section id="problem">
+  <div class="problem-grid">
+    <div class="problem-left">
+      <div class="section-eyebrow reveal">El Problema</div>
+      <h2 class="section-title reveal reveal-delay-1">¿Sientes que tu imagen no refleja <em>quién realmente eres?</em></h2>
+      <ul class="problem-list">
+        <li class="reveal reveal-delay-1">No sabes qué ponerte para proyectar autoridad y confianza</li>
+        <li class="reveal reveal-delay-2">Tu guardarropa no representa tu crecimiento profesional</li>
+        <li class="reveal reveal-delay-3">Sientes inseguridad al vestir en reuniones importantes</li>
+        <li class="reveal reveal-delay-4">Compras ropa que no usas porque "no te queda bien"</li>
+        <li class="reveal">Te sientes invisible o no tomada en serio en espacios profesionales</li>
+      </ul>
+    </div>
+    <div class="problem-right">
+      <div class="section-eyebrow reveal" style="color:var(--gold)">La Transformación</div>
+      <p class="solution-quote reveal reveal-delay-1">Lisa no cambia solo tu ropa. Cambia la <strong>percepción que el mundo tiene de ti.</strong></p>
+      <p class="solution-detail reveal reveal-delay-2">A través de un proceso estratégico y profundamente personalizado, combinamos análisis de imagen, psicología del color y estilo auténtico para crear una presencia que comunica exactamente quién eres y hacia dónde vas.<br><br>El resultado: más seguridad, más oportunidades y una versión de ti que el mundo no puede ignorar.</p>
+    </div>
+  </div>
+</section>
+
+<!-- SOBRE LISA -->
+<section id="about">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-image-wrap reveal">
+        <div class="about-img-placeholder"></div>
+        <div class="about-badge">
+          <div class="num">10</div>
+          <div class="lbl">Años de<br>Expertise</div>
+        </div>
+      </div>
+      <div class="about-content">
+        <div class="section-eyebrow reveal">Sobre Mí</div>
+        <h2 class="section-title reveal reveal-delay-1">Asesora de imagen,<br><em>transformadora de vidas.</em></h2>
+        <div class="about-bio reveal reveal-delay-2">
+          <p>Soy Lisa, asesora de imagen con más de 10 años ayudando a profesionales a proyectar seguridad, liderazgo y autenticidad a través de su vestimenta.</p>
+          <p>Mi enfoque combina análisis de estilo, psicología de la imagen y estrategia visual personalizada. No se trata solo de verse bien — se trata de comunicar con precisión quién eres y qué puedes lograr.</p>
+        </div>
+        <div class="about-certs reveal reveal-delay-3">
+          <div class="cert-item">
+            <div class="cert-icon">🎓</div>
+            <div class="cert-title">Certificada en Asesoría de Imagen</div>
+            <div class="cert-org">AICI · International</div>
+          </div>
+          <div class="cert-item">
+            <div class="cert-icon">🎨</div>
+            <div class="cert-title">Colorimetría Aplicada</div>
+            <div class="cert-org">Color Association of USA</div>
+          </div>
+          <div class="cert-item">
+            <div class="cert-icon">👔</div>
+            <div class="cert-title">Personal Styling Avanzado</div>
+            <div class="cert-org">FIT · New York</div>
+          </div>
+          <div class="cert-item">
+            <div class="cert-icon">🧠</div>
+            <div class="cert-title">Psicología de la Imagen</div>
+            <div class="cert-org">Instituto Europeo</div>
+          </div>
+        </div>
+        <div class="about-philosophy reveal">
+          <p>"Cada persona tiene una historia poderosa que contar. Mi trabajo es asegurar que su imagen la cuente con claridad, elegancia y autenticidad."</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICIOS -->
+<section id="services">
+  <div class="container">
+    <div class="section-eyebrow reveal">Lo que ofrezco</div>
+    <h2 class="section-title reveal reveal-delay-1">Servicios diseñados<br>para <em>tu evolución.</em></h2>
+    <p class="services-intro reveal reveal-delay-2">Cada servicio está diseñado con intención estratégica. No hay soluciones genéricas — cada propuesta es única para ti, tu industria y tus objetivos.</p>
+
+    <div class="services-grid">
+      <div class="service-card reveal">
+        <div class="service-icon">✦</div>
+        <h3 class="service-name">Análisis de Imagen Personal</h3>
+        <p class="service-desc">Descubrimos tu paleta de color ideal, las formas que mejor se adaptan a tu cuerpo y el estilo auténtico que proyecta tu mejor versión.</p>
+        <div class="service-price"><strong>$120</strong> por sesión</div>
+      </div>
+      <div class="service-card reveal reveal-delay-1">
+        <div class="service-icon">◈</div>
+        <h3 class="service-name">Auditoría de Guardarropa</h3>
+        <p class="service-desc">Revisión completa de tu clóset: eliminamos lo que no suma, identificamos vacíos clave y creamos un sistema de outfits que funciona cada día.</p>
+        <div class="service-price"><strong>$150</strong> por sesión</div>
+      </div>
+      <div class="service-card reveal reveal-delay-2">
+        <div class="service-icon">◇</div>
+        <h3 class="service-name">Makeover Completo</h3>
+        <p class="service-desc">La transformación total: análisis, auditoría, personal shopping y sesión de estilismo. De donde estás a donde quieres llegar, en un proceso guiado.</p>
+        <div class="service-price"><strong>$350</strong> paquete completo</div>
+      </div>
+      <div class="service-card reveal">
+        <div class="service-icon">⬡</div>
+        <h3 class="service-name">Personal Shopping Estratégico</h3>
+        <p class="service-desc">Te acompañamos en la selección de prendas clave que construyen un guardarropa funcional, elegante y alineado con tus metas profesionales.</p>
+        <div class="service-price"><strong>$200</strong> por sesión</div>
+      </div>
+      <div class="service-card reveal reveal-delay-1">
+        <div class="service-icon">◎</div>
+        <h3 class="service-name">Asesoría Virtual Internacional</h3>
+        <p class="service-desc">Acceso a asesoría de imagen de nivel profesional desde cualquier parte del mundo. Sesiones personalizadas vía videoconferencia.</p>
+        <div class="service-price"><strong>$100</strong> por sesión</div>
+      </div>
+      <div class="service-card reveal reveal-delay-2" style="display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;background:rgba(201,169,110,0.05);border:1px dashed rgba(201,169,110,0.3);">
+        <div style="font-family:'Cormorant Garamond',serif;font-size:18px;color:rgba(255,255,255,0.5);font-style:italic;line-height:1.6;">¿No sabes cuál es el servicio correcto para ti?<br><span style="color:var(--gold);">Agenda una consulta gratuita de 20 minutos.</span></div>
+      </div>
+    </div>
+
+    <div class="services-cta reveal">
+      <a href="#agenda" class="btn-gold">Quiero Transformar Mi Imagen →</a>
+    </div>
+  </div>
+</section>
+
+<!-- TRANSFORMACIONES -->
+<section id="transformations">
+  <div class="container-wide">
+    <div class="transformations-header">
+      <div class="section-eyebrow reveal">Resultados reales</div>
+      <h2 class="section-title reveal reveal-delay-1">Cada transformación es <em>estratégica,</em><br>no improvisada.</h2>
+    </div>
+
+    <div class="transform-showcase reveal">
+      <div class="showcase-card">
+        <div class="showcase-before-after">
+          <div class="sba-panel before">
+            <div style="position:absolute;top:0;left:0;right:0;bottom:0;background:linear-gradient(160deg,#d0c8be,#a8a098);opacity:0.9;"></div>
+            <div style="position:relative;z-index:1;text-align:center;width:100%;padding:20px 0;">
+              <div style="font-size:48px;opacity:0.4;">👤</div>
+            </div>
+            <span class="sba-tag" style="position:relative;z-index:1;">Antes</span>
+          </div>
+          <div class="sba-panel after">
+            <div style="position:absolute;top:0;left:0;right:0;bottom:0;background:linear-gradient(160deg,#2d2d2a,#1a1a18);opacity:1;"></div>
+            <div style="position:relative;z-index:1;text-align:center;width:100%;padding:20px 0;">
+              <div style="font-size:48px;opacity:0.5;">✦</div>
+            </div>
+            <span class="sba-tag" style="position:relative;z-index:1;">Después</span>
+          </div>
+        </div>
+        <div class="showcase-info">
+          <h4>De casual a ejecutiva</h4>
+          <p>Gerente de Marketing · "De look desorganizado a presencia ejecutiva segura. Conseguí el ascenso en 3 meses."</p>
+        </div>
+      </div>
+      <div class="showcase-card">
+        <div class="showcase-before-after">
+          <div class="sba-panel before">
+            <div style="position:absolute;top:0;left:0;right:0;bottom:0;background:linear-gradient(160deg,#cfc8be,#b0a898);opacity:0.9;"></div>
+            <div style="position:relative;z-index:1;text-align:center;width:100%;padding:20px 0;">
+              <div style="font-size:48px;opacity:0.4;">👤</div>
+            </div>
+            <span class="sba-tag" style="position:relative;z-index:1;">Antes</span>
+          </div>
+          <div class="sba-panel after">
+            <div style="position:absolute;top:0;left:0;right:0;bottom:0;background:linear-gradient(160deg,#1e2420,#141a16);opacity:1;"></div>
+            <div style="position:relative;z-index:1;text-align:center;width:100%;padding:20px 0;">
+              <div style="font-size:48px;opacity:0.5;">✦</div>
+            </div>
+            <span class="sba-tag" style="position:relative;z-index:1;">Después</span>
+          </div>
+        </div>
+        <div class="showcase-info">
+          <h4>Emprendedor con autoridad</h4>
+          <p>CEO & Fundador · "Mis clientes comenzaron a percibirme diferente. La imagen comunica antes que las palabras."</p>
+        </div>
+      </div>
+      <div class="showcase-card">
+        <div class="showcase-before-after">
+          <div class="sba-panel before">
+            <div style="position:absolute;top:0;left:0;right:0;bottom:0;background:linear-gradient(160deg,#d4cdc4,#bcb5aa);opacity:0.9;"></div>
+            <div style="position:relative;z-index:1;text-align:center;width:100%;padding:20px 0;">
+              <div style="font-size:48px;opacity:0.4;">👤</div>
+            </div>
+            <span class="sba-tag" style="position:relative;z-index:1;">Antes</span>
+          </div>
+          <div class="sba-panel after">
+            <div style="position:absolute;top:0;left:0;right:0;bottom:0;background:linear-gradient(160deg,#282520,#18160f);opacity:1;"></div>
+            <div style="position:relative;z-index:1;text-align:center;width:100%;padding:20px 0;">
+              <div style="font-size:48px;opacity:0.5;">✦</div>
+            </div>
+            <span class="sba-tag" style="position:relative;z-index:1;">Después</span>
+          </div>
+        </div>
+        <div class="showcase-info">
+          <h4>Transición de carrera exitosa</h4>
+          <p>Abogada · "Cambié de industria y necesitaba reinventarme. Lisa hizo posible que mi imagen contara mi nueva historia."</p>
+        </div>
+      </div>
+      <div class="showcase-card">
+        <div class="showcase-before-after">
+          <div class="sba-panel before">
+            <div style="position:absolute;top:0;left:0;right:0;bottom:0;background:linear-gradient(160deg,#c8c0b5,#a8a098);opacity:0.9;"></div>
+            <div style="position:relative;z-index:1;text-align:center;width:100%;padding:20px 0;">
+              <div style="font-size:48px;opacity:0.4;">👤</div>
+            </div>
+            <span class="sba-tag" style="position:relative;z-index:1;">Antes</span>
+          </div>
+          <div class="sba-panel after">
+            <div style="position:absolute;top:0;left:0;right:0;bottom:0;background:linear-gradient(160deg,#252825,#171a17);opacity:1;"></div>
+            <div style="position:relative;z-index:1;text-align:center;width:100%;padding:20px 0;">
+              <div style="font-size:48px;opacity:0.5;">✦</div>
+            </div>
+            <span class="sba-tag" style="position:relative;z-index:1;">Después</span>
+          </div>
+        </div>
+        <div class="showcase-info">
+          <h4>Confianza para liderar</h4>
+          <p>Directora de Operaciones · "Por primera vez en mi vida siento que mi exterior refleja mi interior. Soy otra persona."</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="transform-bottom-quote reveal">
+      <p>Más de <strong>300 historias de transformación</strong> respaldan este proceso. La tuya podría ser la siguiente.</p>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIOS -->
+<section id="testimonials">
+  <div class="container">
+    <div class="section-eyebrow reveal">Lo que dicen</div>
+    <h2 class="section-title reveal reveal-delay-1">Resultados que <em>hablan por sí solos.</em></h2>
+
+    <div class="testimonials-grid">
+      <div class="testimonial-card reveal">
+        <div class="testimonial-quote-icon">"</div>
+        <p class="testimonial-text">Mi seguridad cambió completamente después de trabajar con Lisa. Hoy me siento preparada para cualquier reunión, presentación o evento. Es como si finalmente hubiera encontrado mi versión profesional real.</p>
+        <div class="testimonial-author">
+          <div class="author-avatar">A</div>
+          <div>
+            <div class="author-name">Andrea Morales</div>
+            <div class="author-role">Directora de Marketing · Empresa Tecnológica</div>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial-card reveal reveal-delay-1">
+        <div class="testimonial-quote-icon">"</div>
+        <p class="testimonial-text">Como emprendedor, nunca le dí importancia a mi imagen. Lisa me enseñó que la imagen ES el primer mensaje que mandas. Después de nuestro trabajo juntos, logré cerrar tres contratos importantes en un mes.</p>
+        <div class="testimonial-author">
+          <div class="author-avatar" style="background:linear-gradient(135deg,#8a9e88,#5d7a5b);">C</div>
+          <div>
+            <div class="author-name">Carlos Vega</div>
+            <div class="author-role">CEO · Consultora de Negocios</div>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial-card reveal reveal-delay-2">
+        <div class="testimonial-quote-icon">"</div>
+        <p class="testimonial-text">La inversión más valiosa que he hecho en mi carrera. Lisa no solo transformó mi guardarropa, transformó la percepción que tengo de mí misma. Me siento poderosa, auténtica y lista para lo que venga.</p>
+        <div class="testimonial-author">
+          <div class="author-avatar" style="background:linear-gradient(135deg,#c9a96e,#a88a52);">M</div>
+          <div>
+            <div class="author-name">María Fernanda Ríos</div>
+            <div class="author-role">Abogada Corporativa</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="testimonials-fourth">
+      <div class="testimonial-card reveal">
+        <div class="testimonial-quote-icon">"</div>
+        <p class="testimonial-text">Llevaba años comprando ropa que nunca usaba. Con la auditoría de guardarropa entendí exactamente por qué y cómo resolver el problema. Ahora tengo menos prendas, pero me veo increíblemente mejor. El proceso es transformador.</p>
+        <div class="testimonial-author">
+          <div class="author-avatar" style="background:linear-gradient(135deg,#b8ccb6,#8a9e88);">S</div>
+          <div>
+            <div class="author-name">Sofía Ramírez</div>
+            <div class="author-role">Arquitecta · Estudio Propio</div>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial-card reveal reveal-delay-1">
+        <div class="testimonial-quote-icon">"</div>
+        <p class="testimonial-text">La asesoría virtual fue perfecta. Soy de México y aun así tuve acceso a una profesional de altísimo nivel. 100% recomendada.</p>
+        <div class="testimonial-author">
+          <div class="author-avatar" style="background:linear-gradient(135deg,#aaa0a8,#7a6a78);">R</div>
+          <div>
+            <div class="author-name">Roberto Fuentes</div>
+            <div class="author-role">Gerente General · CDMX</div>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial-card reveal reveal-delay-2" style="background:var(--sage);border-top-color:var(--sage-dark);">
+        <div style="font-family:'Cormorant Garamond',serif;font-size:48px;color:rgba(255,255,255,0.15);line-height:0.8;position:absolute;top:32px;right:32px;">"</div>
+        <p style="font-family:'Cormorant Garamond',serif;font-size:20px;color:var(--white);font-style:italic;line-height:1.6;margin-bottom:24px;">Cada cliente que llega a mí lleva una historia poderosa. Mi trabajo es hacer que el mundo pueda verla.</p>
+        <div class="testimonial-author">
+          <div class="author-avatar" style="background:var(--ink);">L</div>
+          <div>
+            <div class="author-name" style="color:var(--white);">Lisa</div>
+            <div class="author-role" style="color:rgba(255,255,255,0.7);">Image Stylist & Fundadora</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA FUERTE -->
+<section id="cta">
+  <div class="container" style="position:relative;z-index:1;text-align:center;">
+    <div class="section-eyebrow reveal" style="justify-content:center;">Tu momento es ahora</div>
+    <h2 class="cta-title reveal reveal-delay-1">Tu próxima versión<br><em>comienza hoy.</em></h2>
+    <p class="cta-sub reveal reveal-delay-2">No esperes más para convertirte en la persona que ya eres por dentro. Una sola decisión puede cambiar todo.</p>
+    <a href="#agenda" class="btn-gold reveal reveal-delay-3" style="font-size:12px;padding:20px 64px;">Agenda tu Transformación Ahora →</a>
+  </div>
+</section>
+
+<!-- AGENDA / CONTACTO -->
+<section id="agenda">
+  <div class="container">
+    <div class="agenda-grid">
+      <div class="agenda-info">
+        <div class="section-eyebrow reveal">Primer Paso</div>
+        <h2 class="serif reveal reveal-delay-1" style="font-size:clamp(28px,3vw,42px);margin-bottom:20px;color:var(--ink);">Comencemos tu <em>transformación.</em></h2>
+        <p class="reveal reveal-delay-2">Agenda tu primera sesión y descubramos juntos el potencial de tu imagen. Recibo clientes de forma presencial y virtual.</p>
+        <ul class="agenda-features">
+          <li class="reveal">Análisis inicial gratuito de 20 minutos</li>
+          <li class="reveal reveal-delay-1">Proceso completamente personalizado</li>
+          <li class="reveal reveal-delay-2">Atención presencial y virtual disponible</li>
+          <li class="reveal reveal-delay-3">Confidencialidad y ambiente de confianza total</li>
+        </ul>
+        <div class="agenda-response reveal">
+          <p><strong>Te respondemos en menos de 24 horas.</strong> Revisamos cada solicitud con atención personalizada.</p>
+        </div>
+      </div>
+      <div class="form-card reveal reveal-delay-1">
+        <form id="appointmentForm">
+          <div class="form-row">
+            <div class="form-group">
+              <label>Nombre completo</label>
+              <input type="text" name="name" placeholder="Tu nombre" required>
+            </div>
+            <div class="form-group">
+              <label>Correo electrónico</label>
+              <input type="email" name="email" placeholder="tu@email.com" required>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label>Teléfono / WhatsApp</label>
+              <input type="tel" name="phone" placeholder="+507 000 0000">
+            </div>
+            <div class="form-group">
+              <label>Tipo de servicio</label>
+              <select name="service" required>
+                <option value="" disabled selected>Selecciona un servicio</option>
+                <option>Análisis de Imagen Personal</option>
+                <option>Auditoría de Guardarropa</option>
+                <option>Makeover Completo</option>
+                <option>Personal Shopping Estratégico</option>
+                <option>Asesoría Virtual Internacional</option>
+                <option>Consulta gratuita (20 min)</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Fecha preferida</label>
+            <input type="date" name="date">
+          </div>
+          <div class="form-group">
+            <label>¿Cuál es tu principal objetivo?</label>
+            <textarea name="message" placeholder="Cuéntame brevemente qué quieres lograr con esta asesoría..."></textarea>
+          </div>
+          <button type="submit" class="form-submit">Enviar mi Solicitud →</button>
+        </form>
+        <div class="form-success" id="formSuccess">
+          <p>¡Tu solicitud fue enviada con éxito! 🌿<br>Lisa se pondrá en contacto en menos de 24 horas.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <span class="footer-logo">Lisa</span>
+        <p>Asesora de imagen personal y transformación. Ayudando a profesionales a proyectar su mejor versión desde hace más de 10 años.</p>
+        <div class="footer-social">
+          <a href="#" class="social-link" aria-label="Instagram">
+            <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+          </a>
+          <a href="#" class="social-link" aria-label="Facebook">
+            <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+          </a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h5>Navegación</h5>
+        <ul>
+          <li><a href="#hero">Inicio</a></li>
+          <li><a href="#about">Sobre Lisa</a></li>
+          <li><a href="#services">Servicios</a></li>
+          <li><a href="#transformations">Transformaciones</a></li>
+          <li><a href="#testimonials">Testimonios</a></li>
+          <li><a href="#agenda">Agenda</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Servicios</h5>
+        <ul>
+          <li><a href="#services">Análisis de Imagen</a></li>
+          <li><a href="#services">Auditoría de Guardarropa</a></li>
+          <li><a href="#services">Makeover Completo</a></li>
+          <li><a href="#services">Personal Shopping</a></li>
+          <li><a href="#services">Asesoría Virtual</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Contacto</h5>
+        <div class="footer-contact-item">
+          <span class="icon">✉</span>
+          <span>hola@lisaimagestlyist.com</span>
+        </div>
+        <div class="footer-contact-item">
+          <span class="icon">✆</span>
+          <span>+507 6000 0000</span>
+        </div>
+        <div class="footer-contact-item">
+          <span class="icon">◎</span>
+          <span>Panamá · Atención virtual internacional</span>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 Lisa Image Stylist. Todos los derechos reservados.</p>
+      <div class="footer-legal">
+        <a href="#">Política de Privacidad</a>
+        <a href="#">Términos de Uso</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Nav scroll
+  const nav = document.getElementById('mainNav');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 60);
+  });
+
+  // Mobile menu
+  const toggle = document.getElementById('menuToggle');
+  const wrap = document.getElementById('navLinksWrap');
+  toggle.addEventListener('click', () => {
+    toggle.classList.toggle('open');
+    wrap.classList.toggle('open');
+  });
+  wrap.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      toggle.classList.remove('open');
+      wrap.classList.remove('open');
+    });
+  });
+
+  // Scroll reveal
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); } });
+  }, { threshold: 0.12 });
+  reveals.forEach(el => observer.observe(el));
+
+  // Trigger hero on load
+  setTimeout(() => {
+    document.querySelectorAll('#hero .reveal').forEach(el => el.classList.add('visible'));
+  }, 200);
+
+  // Form submit
+  document.getElementById('appointmentForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    this.style.display = 'none';
+    document.getElementById('formSuccess').style.display = 'block';
+  });
+</script>
+
+</body>
+</html>
